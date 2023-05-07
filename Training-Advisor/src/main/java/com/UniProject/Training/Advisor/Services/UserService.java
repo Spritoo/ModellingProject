@@ -7,5 +7,5 @@ import org.aspectj.apache.bcel.Repository;
 
 public interface UserService {
     UserDTO signUp(UserDTO userDTO);
-    UserDTO signIn(String id, String password);
+    UserDTO signIn(LoginDTO loginDTO);
 }

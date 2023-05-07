@@ -40,11 +40,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDTO signIn(String id, String password) {
-        User user = userRepository.findById(Long.parseLong(id))
+    public UserDTO signIn(LoginDTO loginDTO) {
+        User user = userRepository.findById(loginDTO.getId())
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
 
-        if (password== user.getPassword()) {
+        if (!loginDTO.getPassword().equals(user.getPassword())) {
             throw new BadCredentialsException("Invalid password");
         }
 
